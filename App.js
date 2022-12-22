@@ -1,16 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import Generate from './src/generate';
+import ListItem from './src/Listitems';
 import Nav from './src/nav';
 
 const App = () => {
   const [hello, setHello] = useState(true);
+  const [random, setRandom] = useState([10, 89]);
 
   // useEffect(() => {
   //   setTimeout(() => {
   //     setHello(false);
   //   }, 2000);
   // }, []);
+
+  // Generating random numbers
+  const onAddRandom = () => {
+   const randomVal = Math.floor(Math.random() *100) +1
+   const newNumber = [...random  , randomVal]
+   setRandom(newNumber)
+  };
 
   return (
     <View style={styles.mainView}>
@@ -23,8 +32,9 @@ const App = () => {
         <Text style={styles.basicText}>Text 2</Text>
       </View>
       <View>
-        <Generate/>
+        <Generate add={() => onAddRandom()} />
       </View>
+      <ListItem items={random} />
       {/* {hello ? <Text>Hello world</Text> : null} */}
     </View>
   );
