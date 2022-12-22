@@ -1,17 +1,22 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Generate = () => {
+const Generate = ({add}) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.textStyle}>Number</Text>
-    </View>
+    <TouchableOpacity
+      onPress={() => add()}
+      underlayColor="green"
+      activeOpacity={0.1}>
+      <View style={styles.container}>
+        <Text style={styles.textStyle}>Number</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'skyBlue',
+    backgroundColor: 'red',
     width: '100%',
     alignItems: 'center',
   },
